@@ -1,6 +1,6 @@
 {
   "name": "cz-krec",
-  "version": "0.0.0-semantically-released.0",
+  "version": "0.0.1",
   "description": "Commitizen adapter for kontur-recognition",
   "main": "index.js",
   "scripts": {
@@ -16,13 +16,14 @@
   "author": "Jim Cummins <jimthedev@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "simple-git": "^1.85.0"
   },
   "devDependencies": {
     "commitizen": "2.9.6",
     "semantic-release": "^6.3.2"
   },
   "config": {
-    "commitizen" : {
+    "commitizen": {
       "path": "./index.js"
     }
   }
