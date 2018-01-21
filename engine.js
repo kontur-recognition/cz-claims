@@ -1,4 +1,4 @@
-const simlegit = require('simple-git');
+const simpleGit = require('simple-git/promise');
 // This can be any kind of SystemJS compatible module.
 // We use Commonjs here, but ES6 or AMD would do just
 // fine.
@@ -24,18 +24,20 @@ module.exports = function () {
             // You can also opt to use another input
             // collection library if you prefer.
             const git = simpleGit('.');
-            let saveBranch;
+            let savedBranch;
             git.branch()
                 .then((branch) => {
-                    saveBranch = branch;
+                    savedBranch = branch.current;
+                    if (savedBranch === 'master')
+                        savedBranch = 'R-666';
                     return cz.prompt([{
                         type: 'input',
-                        name: 'описание',
-                        message: `к описанию будет автоматически добавлено '${branch}: '`
+                        name: 'message',
+                        message: `к коммиту будет автоматически добавлено '${savedBranch}: '`
                     }]);
                 })
                 .then(answers => {
-                    const head = `${saveBranch}: ${answers['описание'].trim()}`;
+                    const head = `${savedBranch}: ${answers.message.trim()}`;
                     commit(head);
                 });
         }
