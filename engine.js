@@ -1,14 +1,3 @@
-const wrap = require('word-wrap');
-const map = require('lodash.map');
-const longest = require('longest');
-const rightPad = require('right-pad');
-
-const filter = function (array) {
-    return array.filter(function (x) {
-        return x;
-    });
-};
-
 // This can be any kind of SystemJS compatible module.
 // We use Commonjs here, but ES6 or AMD would do just
 // fine.
